@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  <meta name="author" content="董沅鑫, yuanxin.me@gmail.com">
+  
+  
+  
+  <title>Matlab学习笔记 | 朽年的博客</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="Matlab,Matlab,笔记,">
+  
+
+  <script>
+    console.log('\n%c Hexo-theme-bmw v4.0 ' + '%c 🎉 https://github.com/dongyuanxin/theme-bmw 🎉\n' + '\n%c View demo online ' + '%c 🔍 https://godbmw.com/ 🔍  \n' , 'color: #fadfa3; background: #030307; padding:3px 0;', '', 'color: #fadfa3; background: #030307; padding:3px 0;', '');
+  </script>
+
+  
+
+  
+
+  
+    <link rel="icon" href="/images/favicon.ico">
+    <link rel="apple-touch-icon" href="/images/touch-icon.png">
+  
+
+  <link href="https://cdn.bootcss.com/fancybox/3.5.2/jquery.fancybox.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/base.css">
+<link rel="stylesheet" href="/icon/iconfont.css">
+<link rel="stylesheet" href="/css/github-markdown.css">
+<link rel="stylesheet" href="/css/highlight.css">
+
+  <script src="/js/util.js"></script>
+<script src="/js/valine.min.js"></script>
+
+  
+
+  
+    <link href="https://cdn.bootcss.com/aplayer/1.10.1/APlayer.min.css" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/aplayer/1.10.1/APlayer.min.js" async></script>
+  
+
+  
+    <link href="https://cdn.bootcss.com/social-share.js/1.0.16/css/share.min.css" rel="stylesheet">
+  
+  
+  <script src="//cdn.bootcss.com/jquery/3.3.1/jquery.min.js" async></script>
+  
+  
+    <script src="//cdn.jsdelivr.net/npm/leancloud-storage@3.11.0/dist/av-min.js"></script>
+  
+
+</head>
+
+  <body>
+
+    
+
+    <div id="app">
+
+      <div class="header-wrap">
+  <header>
+    <div class="site-brand">
+      <div class="site-title">
+        <a href="/">朽年的博客</a>
+      </div>
+    </div>
+    <nav class="site-navigation">
+      <ul class="nav-menu">
+      
+        <li class="nav-item" data-path="/">
+          
+            <a href="/" target="_self">
+              主页
+            </a>
+          
+        </li>
+      
+        <li class="nav-item" data-path="/archives/">
+          
+            <a href="/archives/" target="_self">
+              归档
+            </a>
+          
+        </li>
+      
+        <li class="nav-item" data-path="/categories/">
+          
+            <a href="/categories/" target="_self">
+              分类云
+            </a>
+          
+        </li>
+      
+        <li class="nav-item" data-path="/tags/">
+          
+            <a href="/tags/" target="_self">
+              标签云
+            </a>
+          
+        </li>
+      
+        <li class="nav-item" data-path="/friends/">
+          
+            <a href="/friends/" target="_self">
+              友链
+            </a>
+          
+        </li>
+      
+        <li class="nav-item" data-path="/about/">
+          
+            <a href="/about/" target="_self">
+              关于
+            </a>
+          
+        </li>
+      
+        <li class="nav-item" data-path>
+          
+            <a href="javascript:void(0);" v-else>抓到我</a>
+            <ul class="nav-menu--dropdown">
+              
+                <li>
+                  <a href="https://github.com/tangbeida" target="_blank">
+                    Github
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="https://www.zhihu.com" target="_blank">
+                    知乎
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </li>
+      
+      </ul>
+    </nav>
+    <i class="iconfont icon-menu"></i>
+  </header>
+</div>
+
+<script>
+  let links = document.querySelectorAll('.nav-item');
+  for(let link of links){
+    let childrenLink = link.querySelector('ul');
+    link.addEventListener('mouseenter', () => {
+      if(childrenLink) {
+        childrenLink.className = "nav-menu--dropdown active";
+      }
+    })
+    link.addEventListener('mouseleave', () => {
+      if(childrenLink) {
+        childrenLink.className = "nav-menu--dropdown";
+      }
+    })
+  }
+  let rootRealPath = getRealPath(window.location.pathname, true);
+  for(let link of links) {
+    let linkPath = link.getAttribute("data-path");
+    if(linkPath && getRealPath(linkPath, true) === rootRealPath) {
+      link.className = "nav-item hover";
+    }
+  }
+
+  let iconMenu = document.querySelector("i.iconfont.icon-menu"),
+    iconMenuClicked = false;
+  let navDOM = document.querySelector("nav.site-navigation");
+  iconMenu.addEventListener("click", () => {
+    iconMenuClicked 
+      ? navDOM.className = "site-navigation active"
+      : navDOM.className = "site-navigation";
+    iconMenuClicked = !iconMenuClicked;
+  })
+</script>
+
+      
+
+
+
+
+
+
+
+
+<div class="container post-index">
+
+  
+
+<div class="post">
+  <h1 class="article-title">
+    <span>Matlab学习笔记</span>
+  </h1>
+  <div class="article-top-meta">
+    <span>
+      发布 : 
+      2019-04-29
+    </span>
+    
+      <span>
+        分类 : 
+          <a href="/categories/Matlab/">
+            Matlab
+          </a>
+      </span>
+    
+    
+      <span>
+        浏览 : <span class="article-timer" data-identity="matlab学习笔记"></span>
+      </span>
+    
+  </div>
+
+  
+
+  <div class="article-content">
+    <div class="markdown-body">
+      <p></p>
+<h2 id="一-Matlab概述"><a href="#一-Matlab概述" class="headerlink" title="一. Matlab概述"></a>一. Matlab概述</h2><p>MATLAB(矩阵实验室)是数字计算，可视化和编程的第四代高级编程语言和交互式环境。MATLAB是由MathWorks开发的。</p>
+<p>它允许矩阵操纵，绘制功能和数据; 实现算法; 创建用户界面; 与其他语言编写的程序(包括C语言，C++，Java和FORTRAN)进行交互; 分析数据; 开发算法; 并创建模型和应用程序。</p>
+<p>它有许多内置命令和数学函数，可以帮助您进行数学计算，生成图形和执行数值方法。</p>
+<h3 id="1-MATLAB计算数学"><a href="#1-MATLAB计算数学" class="headerlink" title="1. MATLAB计算数学"></a>1. MATLAB计算数学</h3><p>MATLAB用于计算数学的各个方面，以下是最常用的常用数学计算方法 -</p>
+<ul>
+<li>处理矩阵和数组</li>
+<li>2D和3D绘图和图形</li>
+<li>线性代数</li>
+<li>代数方程</li>
+<li>非线性函数</li>
+<li>统计</li>
+<li>数据分析</li>
+<li>微积分和微分方程</li>
+<li>数值计算</li>
+<li>积分</li>
+<li>变换</li>
+<li>曲线拟合</li>
+<li>各种其他特殊功能</li>
+</ul>
+<h3 id="2-MATLAB特点"><a href="#2-MATLAB特点" class="headerlink" title="2. MATLAB特点"></a>2. MATLAB特点</h3><p>以下是MATLAB的基本特性 -</p>
+<ul>
+<li>它是数字计算，可视化和应用程序开发的高级语言。</li>
+<li>它还为迭代探索，设计和解决问题提供了一个交互式环境。</li>
+<li>它为线性代数，统计学，傅里叶分析，滤波，优化，数值积分和求解常微分方程提供了广泛的数学函数库。</li>
+<li>它提供内置的图形，用于可视化数据和工具，用于创建自定义绘图。</li>
+<li>MATLAB编程接口提供了开发工具，以提高代码质量的可维护性并最大限度提高性能。</li>
+<li>它提供使用自定义图形界面构建应用程序的工具。</li>
+<li>它提供了基于MATLAB的算法与外部应用程序和语言(如C语言，Java，.NET和Microsoft Excel)集成的功能。</li>
+</ul>
+<h3 id="3-MATLAB使用"><a href="#3-MATLAB使用" class="headerlink" title="3. MATLAB使用"></a>3. MATLAB使用</h3><p>MATLAB广泛应用于物理，化学，数学和所有工程流领域的科学与工程计算工具。 它用于一系列应用，包括 -</p>
+<ul>
+<li>信号处理和通信</li>
+<li>图像和视频处理</li>
+<li>控制系统</li>
+<li>测试和测量</li>
+<li>计算财务</li>
+<li>计算生物学</li>
+</ul>
+<h2 id="二-Matlab基础语法"><a href="#二-Matlab基础语法" class="headerlink" title="二. Matlab基础语法"></a>二. Matlab基础语法</h2><p>MATLAB环境的行为就像一个超级复杂的计算器。可以在<code>&gt;&gt;</code>命令提示符下输入命令。<br>MATLAB是一个解释性的环境。换句话说，用户只要给出一个命令，MATLAB马上执行它。</p>
+<h3 id="1-实践练习"><a href="#1-实践练习" class="headerlink" title="1. 实践练习"></a>1. 实践练习</h3><p>在实践练习之前，首先打开 MATLAB R2018 ，如下图所示 -、</p>
+<p><img src="https://tangbeida.oss-cn-hangzhou.aliyuncs.com/image/matlab/980090932_88806.png" alt></p>
+<p>在<em>命令行窗口</em>中输入有效的表达式，例如 - </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Trial&gt;&gt; 5 + 5</span><br></pre></td></tr></table></figure>
+<p>然后按<em>回车</em>，MATLAB立即执行，返回结果如下 -</p>
+<p><img src="https://tangbeida.oss-cn-hangzhou.aliyuncs.com/image/matlab/112090950_60973.png" alt></p>
+<p>让我们再来看几个例子 -</p>
+<p><strong>计算次幂</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Trial&gt;&gt; 3 ^ 2           % 3 raised to the power of 2</span><br><span class="line"></span><br><span class="line">ans =</span><br><span class="line"></span><br><span class="line">     9</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">MATLAB</span><br></pre></td></tr></table></figure>
+<p><strong>计算正弦值</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Trial&gt;&gt; sin(pi /2)      % sine of angle 90o</span><br><span class="line"></span><br><span class="line">ans =</span><br><span class="line"></span><br><span class="line">     1</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">MATLAB</span><br></pre></td></tr></table></figure>
+<p><strong>除以零</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Trial&gt;&gt; 7/0              % Divide by zero</span><br><span class="line"></span><br><span class="line">ans =</span><br><span class="line"></span><br><span class="line">   Inf</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">MATLAB</span><br></pre></td></tr></table></figure>
+<p><strong>数学计算表达式</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Trial&gt;&gt; 123 * 23.259</span><br><span class="line"></span><br><span class="line">ans =</span><br><span class="line"></span><br><span class="line">   2.8609e+03</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">MATLAB</span><br></pre></td></tr></table></figure>
+<p>MATLAB为某些数学符号提供了一些特殊表达式，如<code>pi</code>为<code>π</code>，<code>Inf</code>为<code>∞</code>，<code>i</code>(和<code>j</code>)为<code>√-1</code>，<code>.Nan</code>代表“非数字”等。</p>
+<h3 id="2-在MATLAB中使用分号"><a href="#2-在MATLAB中使用分号" class="headerlink" title="2.在MATLAB中使用分号(;)"></a><strong>2.在MATLAB中使用分号(;)</strong></h3><p>分号(<code>;</code>)表示结束语句。 但是，如果要抑制和隐藏表达式的MATLAB输出，请在表达式后添加分号。</p>
+<p>例如，</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">x = 3;</span><br><span class="line">y = x + 5</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">MATLAB</span><br></pre></td></tr></table></figure>
+<p>上面代码执行后，得到以下结果 - </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Trial&gt;&gt; x = 3;</span><br><span class="line">y = x + 5</span><br><span class="line"></span><br><span class="line">y =</span><br><span class="line"></span><br><span class="line">     8</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">MATLAB</span><br></pre></td></tr></table></figure>
+<h3 id="3-添加注释"><a href="#3-添加注释" class="headerlink" title="3.添加注释"></a><strong>3.添加注释</strong></h3><p>百分比符号(<code>%</code>)用于指示注释行。 例如， </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">x = 9    % assign the value 9 to x</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">MATLAB</span><br></pre></td></tr></table></figure>
+<p>还可以使用块注释运算符<code>%{</code>和<code>%}</code>编写一段注释。</p>
+<p>MATLAB编辑器包括工具和上下文菜单项，以帮助添加，删除或更改注释的格式。</p>
+<h3 id="4-常用的运算符和特殊字符"><a href="#4-常用的运算符和特殊字符" class="headerlink" title="4.常用的运算符和特殊字符"></a><strong>4.常用的运算符和特殊字符</strong></h3><p>MATLAB支持以下常用的运算符和特殊字符 -</p>
+<table>
+<thead>
+<tr>
+<th>运算符</th>
+<th>使用说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>+</code></td>
+<td>相加; 加法运算符。</td>
+</tr>
+<tr>
+<td><code>-</code></td>
+<td>相减; 减法运算符。</td>
+</tr>
+<tr>
+<td><code>*</code></td>
+<td>标量和矩阵乘法运算符。</td>
+</tr>
+<tr>
+<td><code>.*</code></td>
+<td>阵列乘法运算符。</td>
+</tr>
+<tr>
+<td><code>^</code></td>
+<td>标量和矩阵求幂运算符。</td>
+</tr>
+<tr>
+<td><code>.^</code></td>
+<td>阵列求幂运算符。</td>
+</tr>
+<tr>
+<td><code>\</code></td>
+<td>左除法运算符。</td>
+</tr>
+<tr>
+<td><code>/</code></td>
+<td>右除法运算符。</td>
+</tr>
+<tr>
+<td><code>.\</code></td>
+<td>阵列左除法运算符。</td>
+</tr>
+<tr>
+<td><code>./</code></td>
+<td>右除法运算符。</td>
+</tr>
+<tr>
+<td><code>:</code></td>
+<td>冒号; 生成规则间隔的元素，并表示整个行或列。</td>
+</tr>
+<tr>
+<td><code>( )</code></td>
+<td>括号; 包含函数参数和数组索引; 覆盖优先级。</td>
+</tr>
+<tr>
+<td><code>[ ]</code></td>
+<td>括号; 罩住阵列元素。</td>
+</tr>
+<tr>
+<td><code>.</code></td>
+<td>小数点。</td>
+</tr>
+<tr>
+<td><code>…</code></td>
+<td>省略号; 行连续运算符</td>
+</tr>
+<tr>
+<td><code>,</code></td>
+<td>逗号; 分隔一行中的语句和元素</td>
+</tr>
+<tr>
+<td><code>;</code></td>
+<td>分号; 分隔列并抑制输出显示。</td>
+</tr>
+<tr>
+<td><code>%</code></td>
+<td>百分号;指定一个注释并指定格式。</td>
+</tr>
+<tr>
+<td><code>_</code></td>
+<td>引用符号和转置运算符。</td>
+</tr>
+<tr>
+<td><code>._</code></td>
+<td>非共轭转置运算符。</td>
+</tr>
+<tr>
+<td><code>=</code></td>
+<td>赋值运算符。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="5-特殊变量和常数"><a href="#5-特殊变量和常数" class="headerlink" title="5.特殊变量和常数"></a><strong>5.特殊变量和常数</strong></h3><p>MATLAB支持以下特殊变量和常量：</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ans</code></td>
+<td>最近的回应/回答。</td>
+</tr>
+<tr>
+<td><code>eps</code></td>
+<td>浮点精度精度。</td>
+</tr>
+<tr>
+<td><code>i</code>,<code>j</code></td>
+<td>虚构单位<code>√-1</code>。</td>
+</tr>
+<tr>
+<td><code>Inf</code></td>
+<td>无穷</td>
+</tr>
+<tr>
+<td><code>NaN</code></td>
+<td>未定义的数值结果(非数字)。</td>
+</tr>
+<tr>
+<td><code>pi</code></td>
+<td>数字<code>π</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="6-命名变量"><a href="#6-命名变量" class="headerlink" title="6. 命名变量"></a>6. 命名变量</h3><p>变量名称由一个字母组成，后跟任意数字的字母，数字或下划线。</p>
+<p>MATLAB是区分大小写的编程语言。</p>
+<p>变量名称可以是任意长度，但MATLAB只使用前<code>N</code>个字符，其中N由函数<code>namelengthmax</code>给出。</p>
+<h3 id="7-保存工作"><a href="#7-保存工作" class="headerlink" title="7. 保存工作"></a>7. 保存工作</h3><p><code>save</code>命令用于在工作空间中保存所有变量，它在当前目录中，以<code>.mat</code>作为扩展名的文件。</p>
+<p>例如，</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">save mymat</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">MATLAB</span><br></pre></td></tr></table></figure>
+<p>可以随时使用<code>load</code>命令重新加载文件。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">load mymat</span><br></pre></td></tr></table></figure>
+<h2 id="三-Matlab变量"><a href="#三-Matlab变量" class="headerlink" title="三. Matlab变量"></a>三. Matlab变量</h2><p>在MATLAB环境中，每个变量都是数组或矩阵。</p>
+<p>可以以简单的方式分配变量。 例如，</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">x = 12       % defining x and initializing it with a value</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">MATLAB</span><br></pre></td></tr></table></figure>
+<p>MATLAB执行上述语句并返回以下结果 -</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Trial&gt;&gt; x = 12       % defining x and initializing it with a value</span><br><span class="line"></span><br><span class="line">x =</span><br><span class="line"></span><br><span class="line">    12</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">MATLAB</span><br></pre></td></tr></table></figure>
+<p>它创建一个名为<code>x</code>的<code>1×1</code>矩阵，并将值<code>12</code>存储在其元素中。再来看一个例子，如下，</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">x = sqrt(16)     % defining x and initializing it with an expression</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">MATLAB</span><br></pre></td></tr></table></figure>
+<p>MATLAB执行上述语句并返回以下结果 -</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Trial&gt;&gt; x = sqrt(16)     % defining x and initializing it with an expression</span><br><span class="line"></span><br><span class="line">x =</span><br><span class="line"></span><br><span class="line">     4</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">MATLAB</span><br></pre></td></tr></table></figure>
+<p>请注意 -</p>
+<ul>
+<li>当变量输入到系统中，可以在接下来代码中引用。</li>
+<li>变量在使用前必须有值。</li>
+<li>当表达式返回未分配给任何变量的结果时，系统将其分配给名为<code>ans</code>的变量，稍后可以使用它。</li>
+</ul>
+<p>例如，</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sqrt(99)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">MATLAB</span><br></pre></td></tr></table></figure>
+<p>MATLAB执行上述语句并返回以下结果 -</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Trial&gt;&gt; sqrt(99)</span><br><span class="line"></span><br><span class="line">ans =</span><br><span class="line"></span><br><span class="line">    9.9499</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">MATLAB</span><br></pre></td></tr></table></figure>
+<p>可以使用这个<code>ans</code>变量 -</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sqrt(99);</span><br><span class="line">99.499/ans</span><br></pre></td></tr></table></figure>
+<p>MATLAB执行上述语句并返回以下结果 -</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Trial&gt;&gt; sqrt(99);</span><br><span class="line">99.499/ans</span><br><span class="line"></span><br><span class="line">ans =</span><br><span class="line"></span><br><span class="line">   10.0000</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">MATLAB</span><br></pre></td></tr></table></figure>
+<p>下面我们再来看另一个例子 -</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">x = 7 * 8;</span><br><span class="line">y = x * 7.89</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">MATLAB</span><br></pre></td></tr></table></figure>
+<p>MATLAB执行上述语句并返回以下结果 -</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Trial&gt;&gt; x = 7 * 8;</span><br><span class="line">y = x * 7.89</span><br><span class="line"></span><br><span class="line">y =</span><br><span class="line"></span><br><span class="line">  441.8400</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">MATLAB</span><br></pre></td></tr></table></figure>
+<h3 id="1-多重分配赋值"><a href="#1-多重分配赋值" class="headerlink" title="1.多重分配赋值"></a>1.多重分配赋值</h3><p>可以在同一行上拥有多个赋值。 例如，</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a = 2; b = 7; c = a * b</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">MATLAB</span><br></pre></td></tr></table></figure>
+<p>MATLAB执行上述语句并返回以下结果 -</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">c = 14</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">MATLAB</span><br></pre></td></tr></table></figure>
+<h3 id="2-变量历史"><a href="#2-变量历史" class="headerlink" title="2.变量历史"></a>2.变量历史</h3><p><code>who</code>命令显示使用过的所有变量名。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Trial&gt;&gt; who</span><br><span class="line"></span><br><span class="line">您的变量为:</span><br><span class="line"></span><br><span class="line">ans  x    y</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">MATLAB</span><br></pre></td></tr></table></figure>
+<p><code>whos</code>命令更多地显示变量 -</p>
+<ul>
+<li>当前在内存中的变量</li>
+<li>每个变量的类型</li>
+<li>每个变量的内存分配</li>
+<li>是否是复合的变量？</li>
+</ul>
+<p>执行结果如下 - </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Trial&gt;&gt; whos </span><br><span class="line">  Name      Size            Bytes  Class     Attributes</span><br><span class="line"></span><br><span class="line">  ans       1x1                 8  double              </span><br><span class="line">  x         1x1                 8  double              </span><br><span class="line">  y         1x1                 8  double</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">MATLAB</span><br></pre></td></tr></table></figure>
+<p>清除命令从存储器中删除所有(或指定的)变量。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">clear x     % it will delete x, won&apos;t display anything</span><br><span class="line">clear          % it will delete all variables in the workspace</span><br><span class="line">            %  peacefully and unobtrusively</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">MATLAB</span><br></pre></td></tr></table></figure>
+<h3 id="3-长任务"><a href="#3-长任务" class="headerlink" title="3.长任务"></a>3.长任务</h3><p>长任务可以通过使用省略号(<code>...</code>)扩展到另一行。 例如，</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">initial_velocity = 0;</span><br><span class="line">acceleration = 9.8;</span><br><span class="line">time = 20;</span><br><span class="line">final_velocity = initial_velocity ...</span><br><span class="line">    + acceleration * time</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">MATLAB</span><br></pre></td></tr></table></figure>
+<p>MATLAB执行上述语句并返回以下结果 -</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Trial&gt;&gt; initial_velocity = 0;</span><br><span class="line">acceleration = 9.8;</span><br><span class="line">time = 20;</span><br><span class="line">final_velocity = initial_velocity + acceleration * time</span><br><span class="line"></span><br><span class="line">final_velocity =</span><br><span class="line"></span><br><span class="line">   196</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">MATLAB</span><br></pre></td></tr></table></figure>
+<h3 id="4-格式命令"><a href="#4-格式命令" class="headerlink" title="4.格式命令"></a>4.格式命令</h3><p>默认情况下，MATLAB显示四位小数位数。这称为：<em>短格式</em>。</p>
+<p>但是，如果要更精确，则需要使用<code>format</code>命令。</p>
+<p><code>format long</code>命令显示十进制后的<code>16</code>位数字。</p>
+<p>例如 -</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Trial&gt;&gt; format long</span><br><span class="line">x = 7 + 10/3 + 5 ^ 1.2</span><br><span class="line"></span><br><span class="line">x =</span><br><span class="line"></span><br><span class="line">  17.231981640639408</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">MATLAB</span><br></pre></td></tr></table></figure>
+<p>另一个示例如下 - </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Trial&gt;&gt; format short</span><br><span class="line">x = 7 + 10/3 + 5 ^ 1.2</span><br><span class="line"></span><br><span class="line">x =</span><br><span class="line"></span><br><span class="line">   17.2320</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">MATLAB</span><br></pre></td></tr></table></figure>
+<p><code>format bank</code>命令将数字舍入到小数点后两位。例如，</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">format bank</span><br><span class="line">daily_wage = 177.45;</span><br><span class="line">weekly_wage = daily_wage * 6</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">MATLAB</span><br></pre></td></tr></table></figure>
+<p>MATLAB执行上述语句并返回以下结果 -</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Trial&gt;&gt; format bank</span><br><span class="line">daily_wage = 177.45;</span><br><span class="line">weekly_wage = daily_wage * 6</span><br><span class="line"></span><br><span class="line">weekly_wage =</span><br><span class="line"></span><br><span class="line">       1064.70</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">MATLAB</span><br></pre></td></tr></table></figure>
+<p>MATLAB使用指数符号显示大数字。</p>
+<p><code>format short e</code>命令以指数形式显示四位小数加上指数。</p>
+<p>例如，</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">format short e</span><br><span class="line">4.678 * 4.9</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">MATLAB</span><br></pre></td></tr></table></figure>
+<p>MATLAB执行上述语句并返回以下结果 -</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Trial&gt;&gt; format short e</span><br><span class="line">4.678 * 4.9</span><br><span class="line"></span><br><span class="line">ans =</span><br><span class="line"></span><br><span class="line">   2.2922e+01</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">MATLAB</span><br></pre></td></tr></table></figure>
+<p><code>format long e</code>命令允许以指数形式显示十六位小数加上指数。 例如，</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">format long e</span><br><span class="line">x = pi</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">MATLAB</span><br></pre></td></tr></table></figure>
+<p>MATLAB执行上述语句并返回以下结果 -</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Trial&gt;&gt; format long e</span><br><span class="line">x = pi</span><br><span class="line"></span><br><span class="line">x =</span><br><span class="line"></span><br><span class="line">     3.141592653589793e+00</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">MATLAB</span><br></pre></td></tr></table></figure>
+<p><code>format rat</code>命令给出计算结果最接近的合理表达式。 例如，</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">format rat</span><br><span class="line">4.678 * 4.9</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">MATLAB</span><br></pre></td></tr></table></figure>
+<p>MATLAB执行上述语句并返回以下结果 -</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Trial&gt;&gt; format rat</span><br><span class="line">4.678 * 4.9</span><br><span class="line"></span><br><span class="line">ans =</span><br><span class="line"></span><br><span class="line">    2063/90</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">MATLAB</span><br></pre></td></tr></table></figure>
+<h3 id="5-创建向量"><a href="#5-创建向量" class="headerlink" title="5.创建向量"></a>5.创建向量</h3><p>向量是数字的一维数组。MATLAB允许创建两种类型的向量：</p>
+<ul>
+<li>行向量</li>
+<li>列向量</li>
+</ul>
+<p><strong>行向量</strong>是通过用方括号中的元素集合来创建的，使用空格或逗号分隔元素。</p>
+<p>例如，</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">r = [7 8 9 10 11]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">MATLAB</span><br></pre></td></tr></table></figure>
+<p>MATLAB执行上述语句并返回以下结果 -</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Trial&gt;&gt; r = [7 8 9 10 11]</span><br><span class="line"></span><br><span class="line">r =</span><br><span class="line"></span><br><span class="line">       7              8              9             10             11</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">MATLAB</span><br></pre></td></tr></table></figure>
+<p><strong>另一个示例</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">r = [7 8 9 10 11];</span><br><span class="line">t = [2, 3, 4, 5, 6];</span><br><span class="line">res = r + t</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">MATLAB</span><br></pre></td></tr></table></figure>
+<p>MATLAB执行上述语句并返回以下结果 -</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Trial&gt;&gt; r = [7 8 9 10 11];</span><br><span class="line">t = [2, 3, 4, 5, 6];</span><br><span class="line">res = r + t</span><br><span class="line"></span><br><span class="line">res =</span><br><span class="line"></span><br><span class="line">       9             11             13             15             17</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">MATLAB</span><br></pre></td></tr></table></figure>
+<p><strong>列向量</strong>通过用方括号中的元素集合来创建，使用分号(<code>;</code>)来分隔元素。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">c = [7;  8;  9;  10; 11]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">MATLAB</span><br></pre></td></tr></table></figure>
+<p>MATLAB执行上述语句并返回以下结果 -</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Trial&gt;&gt; c = [7;  8;  9;  10; 11]</span><br><span class="line"></span><br><span class="line">c =</span><br><span class="line"></span><br><span class="line">       7       </span><br><span class="line">       8       </span><br><span class="line">       9       </span><br><span class="line">      10       </span><br><span class="line">      11</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">MATLAB</span><br></pre></td></tr></table></figure>
+<h3 id="6-创建矩阵"><a href="#6-创建矩阵" class="headerlink" title="6.创建矩阵"></a>6.创建矩阵</h3><p>矩阵是数字的二维数组。</p>
+<p>在MATLAB中，通过将每行作为一系列空格或逗号分隔的元素输入矩阵，并以行号分隔一行。 例如，创建一个<code>3x3</code>的矩阵：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">m = [1 2 3; 4 5 6; 7 8 9]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Maltab</span><br></pre></td></tr></table></figure>
+<p>MATLAB执行上述语句并返回以下结果 -</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Trial&gt;&gt; m = [1 2 3; 4 5 6; 7 8 9]</span><br><span class="line"></span><br><span class="line">m =</span><br><span class="line"></span><br><span class="line">       1              2              3       </span><br><span class="line">       4              5              6       </span><br><span class="line">       7              8              9</span><br></pre></td></tr></table></figure>
+    </div>
+  </div>
+  
+    <div class="copy-right">
+      <div class="markdown-body">
+        <blockquote>
+        
+        
+          本文作者 : 朽年 <br>
+        
+        原文链接 : <a href>http://yoursite.com/passages/matlab学习笔记/</a><br>
+        版权声明 : 本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
+        </blockquote>
+      </div>
+    </div>
+  
+  
+  
+    <div class="social-share" style="margin-top: -2rem" data-wechat-qrcode-title="<p>微信扫一扫</p>" data-wechat-qrcode-helper="<p>微信右上角, 扫一扫分享</p>" data-sites="qzone, qq, weibo, wechat, douban, google, facebook, twitter">
+  <span style="color: #6b7487; font-size: 1.4rem;">分享到: </span>
+</div>
+<script src="https://cdn.bootcss.com/social-share.js/1.0.16/js/social-share.min.js" async></script>
+  
+
+  
+    <div id="reward">
+  
+    <p id="reward-meta">知识 & 情怀 | 二者兼得</p>
+  
+  <button id="reward-btn">
+    
+    <span>投食</span>
+  </button>
+  <div id="reward-qrcode">
+    
+      <div class="reward-qrcode--container">
+        <img class="qrcode-img" src="https://tangbeida.oss-cn-hangzhou.aliyuncs.com/image/MY_ID/%E5%BE%AE%E4%BF%A1.jpg" alt="微信扫一扫, 向我投食">
+        <p class="qrcode-meta">微信扫一扫, 向我投食</p>
+      </div>
+    
+      <div class="reward-qrcode--container">
+        <img class="qrcode-img" src="https://tangbeida.oss-cn-hangzhou.aliyuncs.com/image/MY_ID/%E6%94%AF%E4%BB%98%E5%AE%9D.jpg" alt="支付宝扫一扫, 向我投食">
+        <p class="qrcode-meta">支付宝扫一扫, 向我投食</p>
+      </div>
+    
+  </div>
+
+</div>
+
+<script>
+  (() => {
+    let button = document.querySelector('#reward-btn'),
+      qrcode = document.querySelector('#reward-qrcode'),
+      display = false;
+    
+    button.addEventListener('click', () => {
+      qrcode.style.display = display ? 'none' : 'block'
+      display = !display
+    }, false)
+  })()
+</script>
+  
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+      <span>
+        
+          <i class="iconfont icon-06tags"></i>标签: 
+          
+          <span class="span--tag">
+            <a href="/tags/Matlab/">
+              #Matlab
+            </a>
+          </span>
+          
+          <span class="span--tag">
+            <a href="/tags/笔记/">
+              #笔记
+            </a>
+          </span>
+          
+        
+      </span>
+    </div>
+    <div class="article-meta pull-right">
+    </div>
+  </div>
+</div>
+
+
+  <aside id="sidebar">
+    <p id="sidebar-header"></p>
+    <ol id="sidebar-toc"></ol>
+  </aside>
+  <script async>setTimeout(generateToc, 10);</script>
+
+
+  <nav class="post-navigation">
+    
+    
+  </nav>
+
+  
+    <a href="#comment" class="comment-anchor"></a>
+<div class="comment-title"><i class="iconfont icon-footprint"></i> 留下足迹 <i class="iconfont icon-footprint"></i></div>
+<div id="vcomments"></div>
+
+<script defer>
+  if( true ) {
+    let path = getRealPath()
+    new Valine({
+      el: "#vcomments",
+      appId: "5Sml225fSWFOKRJENmDKJ9zq-gzGzoHsz",
+      appKey: "mUMq9vR0KdKnzhpos9uPpyXo",
+      notify: false,
+      verify: false,
+      avatar: "robohash",
+      placeholder: "正确填写邮箱, 才能及时收到回复哦♪(^∇^*)",
+      path
+    });
+  }
+</script>
+   
+
+  
+    <script defer>
+const valineAPI = (() => {
+  try {
+    AV.init("5Sml225fSWFOKRJENmDKJ9zq-gzGzoHsz", "mUMq9vR0KdKnzhpos9uPpyXo");
+  } catch(error) {}
+  const isExist = (identity) => {
+    identity = identity || getRealPath();
+    let query = new AV.Query('Timer');
+    return new Promise((resolve, reject) => {
+      query.equalTo("identity", identity);
+      query.find().then(results => {
+        resolve(results.length > 0);
+      }, error => reject(error));
+    })
+  }
+
+  const _get = (identity) => {
+    let query = null;
+    if(identity && identity instanceof Array){
+      let querys = [];
+      for(let i = 0; i < identity.length; ++i) {
+        querys[i] = new AV.Query('Timer');
+        querys[i].equalTo('identity', identity[i]);
+      }
+      query = AV.Query.or.apply(null ,querys);
+    } else {
+      identity = identity || getRealPath();
+      query = new AV.Query("Timer");
+      query.equalTo("identity", identity);
+    }
+
+    return new Promise((resolve, reject) => {
+      query.find()
+      .then(results => resolve(results))
+      .catch(error => reject(error))
+    })
+  }
+
+  const create = (identity) => {
+    identity = identity || getRealPath();
+    return new Promise((resolve, reject) => {
+      let Todo = AV.Object.extend('Timer');
+      let todo = new Todo();
+      todo.set("times", 1);
+      todo.set("identity", identity);
+      todo.save().then(res => resolve(true), error => reject(error));
+    })
+  }
+
+  const update = (identity) => {
+    identity = identity || getRealPath();
+    return new Promise((resolve, reject) => {
+      let query = new AV.Query('Timer');
+      query.equalTo("identity", identity);
+      query.find().then(todos => {
+        todos.forEach(todo => {
+          todo.set("times", todo.attributes.times + 1);
+        });
+        return AV.Object.saveAll(todos);
+      }).then(todos => resolve(true), error => reject(error));
+    })
+  }
+
+  return {
+    isExist,
+    _get,
+    update,
+    create
+  }
+})()
+
+const calcAndWriteTimes = () => {
+  let isPost = true;
+
+  let timerAllDOM = document.querySelectorAll(".article-timer");
+
+  if(isPost) {
+    let identity = timerAllDOM[0].getAttribute("data-identity");
+    valineAPI.isExist(identity)
+    .then(exist => {
+      if(exist) {
+        return valineAPI.update(identity);
+      }
+      return new Promise(resolve => resolve(true));
+    })
+    .then( succuess => valineAPI._get(identity))
+    .then( result => timerAllDOM[0].innerText = result[0].attributes.times)
+    .catch(error => console.log(error.message))
+    return ;
+  }
+
+  let timerDOMCache = {};
+
+  for(let timerDOM of timerAllDOM) {
+    let identity = timerDOM.getAttribute("data-identity");
+    if(timerDOMCache.hasOwnProperty(identity)){
+      timerDOMCache[identity].dom.push(timerDOM);
+    }else{
+      timerDOMCache[identity] = {
+        dom: [timerDOM],
+        times: undefined
+      };
+    }
+  }
+
+  let identities = Object.keys(timerDOMCache);
+  valineAPI._get(identities).then(results => {
+    for(let result of results) {
+      let {identity, times} = result.attributes;
+      timerDOMCache[identity].times = times;
+      timerDOMCache[identity].dom.map(item => item.innerText = times);
+    }
+    for(let identity of identities) {
+      if(timerDOMCache[identity].times){
+        continue;
+      }
+      timerDOMCache[identity].dom.map(item => item.innerText = 1);
+      valineAPI.create(identity);
+    }
+  }).catch(error => console.log(error.message))
+}
+
+if(true){
+  calcAndWriteTimes();
+}
+</script>
+   
+
+</div>
+
+
+      <footer>
+  <p class="site-info">
+    博客已萌萌哒运行<span id="time-to-now"></span><span class="my-face">(●'◡'●)ﾉ♥</span>
+    <br>
+    Theme - <a href="https://github.com/dongyuanxin/theme-bmw">BMW</a> | Made With 💗 | Powered by <a href="https://godbmw.com/">GodBMW</a>
+    <br>
+    
+      <a href="https://www.google.com/analytics/" target="_blank">Google Analytics</a>提供统计服务
+    
+  </p>
+</footer>
+
+
+
+<script>
+const timeToNowDOM = document.querySelector("#time-to-now");
+const startTimestamp = new Date(2019, 3, 29).getTime();
+
+const updateTimeStr = () => {
+  let offset = parseInt(
+      (new Date().getTime() - startTimestamp) / 1000,
+      10
+    ),
+    day = Math.floor(offset / 86400),
+    hour = Math.floor((offset % 86400) / 3600),
+    minute = Math.floor(((offset % 86400) % 3600) / 60),
+    second = Math.floor(((offset % 86400) % 3600) % 60);
+  timeToNowDOM.innerHTML =
+    day + "天" + hour + "小时" + minute + "分钟" + second + "秒";
+  setTimeout(updateTimeStr, 500);
+}
+
+setTimeout(updateTimeStr, 500);
+</script>
+
+
+      <div class="back-to-top hidden">
+  <span>
+    <i class="iconfont icon-60"></i><span></span>%
+  </span>
+</div>
+
+<script>
+const updateIconToTop = percent => {
+  let dom = document.querySelector(".back-to-top span span");
+  dom.innerText = percent;
+  if(percent < 1) {
+    document.querySelector(".back-to-top").className = "back-to-top hidden";
+  } else {
+    document.querySelector(".back-to-top").className = "back-to-top";
+  }
+}
+
+const handleScoll = () => {
+  let isRunning = false;
+  return () => {
+    if (isRunning) return;
+    isRunning = true;
+    window.requestAnimationFrame(timestamp => {
+      let scrollTop =
+          document.documentElement.scrollTop || document.body.scrollTop,
+        scrollHeight =
+          document.documentElement.scrollHeight ||
+          document.body.scrollHeight,
+        clientHeight =
+          document.documentElement.clientHeight ||
+          document.body.clientHeight;
+      isRunning = false;
+      if (scrollTop <= 1) {
+        updateIconToTop(0);
+        return;
+      }
+      if (scrollTop + clientHeight >= scrollHeight) {
+        updateIconToTop(100);
+      } else {
+        updateIconToTop(parseInt(
+          100 * scrollTop / (scrollHeight - clientHeight),
+          10
+        ));
+      }
+    });
+  };
+}
+
+const backToTop = () => {
+  let scrollTop =
+      document.documentElement.scrollTop || document.body.scrollTop,
+    delay = 10,
+    time = 200;
+  if (scrollTop <= 20) {
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+    return;
+  }
+  let step = Math.ceil(scrollTop * delay / time);
+  let timer = setInterval(() => {
+    scrollTop =
+      document.documentElement.scrollTop || document.body.scrollTop;
+    if (scrollTop - step <= 0) {
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+      clearInterval(timer);
+    } else {
+      document.documentElement.scrollTop = scrollTop - step;
+      document.body.scrollTop = scrollTop - step;
+    }
+  }, delay);
+}
+
+document.addEventListener("scroll", handleScoll(), false);
+
+document.querySelector(".back-to-top").addEventListener("click", backToTop, false);
+
+</script>
+
+    </div>
+
+    
+      <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+<script>
+  (() => {
+    const mathjaxConfig = {
+      showProcessingMessages: false, //关闭js加载过程信息
+      messageStyle: "none", //不显示信息
+      jax: ["input/TeX", "output/HTML-CSS"],
+      tex2jax: {
+        inlineMath: [["$", "$"], ["\\(", "\\)"]], //行内公式选择符
+        displayMath: [["$$", "$$"], ["\\[", "\\]"]], //段内公式选择符
+        skipTags: ["script", "noscript", "style", "textarea", "pre", "code", "a"] //避开某些标签
+      },
+      "HTML-CSS": {
+        availableFonts: ["STIX", "TeX"], //可选字体
+        showMathMenu: false //关闭右击菜单显示
+      }
+    }
+
+    let mathjaxInterval = setInterval(() => {
+      if(!window.MathJax){
+        return;
+      }
+      window.MathJax.Hub.Config(mathjaxConfig)
+      window.MathJax.Hub.Queue(["Typeset", MathJax.Hub, document.getElementById('app')])
+
+      clearInterval(mathjaxInterval)
+    }, 10)    
+  })()
+</script>
+    
+
+    <script src="https://cdn.bootcss.com/fancybox/3.5.2/jquery.fancybox.min.js" async></script>
+<script async>
+  let fancyTimer = setInterval(function(){
+    if(!window.$){
+      return;
+    }
+    $(document).ready(function() {
+      $(".post img").each(function () {
+        if($(this).parent().get(0).tagName.toLowerCase() === "a") {
+          return;
+        }
+        // $(this).attr("data-fancybox", "gallery"); // if you add 'data-fancybox', img will display after showed
+        var element = document.createElement("a");
+        $(element).attr("data-fancybox", "gallery");
+        $(element).attr("href", $(this).attr("src"));
+        $(this).wrap(element);
+      });
+      
+      clearInterval(fancyTimer);
+    });
+  }, 10);
+</script>
+
+    
+  </body>
+
+</html>
