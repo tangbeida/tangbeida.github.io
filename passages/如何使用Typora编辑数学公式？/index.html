@@ -1,0 +1,1133 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  <meta name="author" content="董沅鑫, yuanxin.me@gmail.com">
+  
+  
+  
+  <title>如何使用Typora编辑数学公式？ | 朽年的博客</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="教程,Typora,">
+  
+
+  <script>
+    console.log('\n%c Hexo-theme-bmw v4.0 ' + '%c 🎉 https://github.com/dongyuanxin/theme-bmw 🎉\n' + '\n%c View demo online ' + '%c 🔍 https://godbmw.com/ 🔍  \n' , 'color: #fadfa3; background: #030307; padding:3px 0;', '', 'color: #fadfa3; background: #030307; padding:3px 0;', '');
+  </script>
+
+  
+
+  
+
+  
+    <link rel="icon" href="/images/favicon.ico">
+    <link rel="apple-touch-icon" href="/images/touch-icon.png">
+  
+
+  <link href="https://cdn.bootcss.com/fancybox/3.5.2/jquery.fancybox.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/base.css">
+<link rel="stylesheet" href="/icon/iconfont.css">
+<link rel="stylesheet" href="/css/github-markdown.css">
+<link rel="stylesheet" href="/css/highlight.css">
+
+  <script src="/js/util.js"></script>
+<script src="/js/valine.min.js"></script>
+
+  
+
+  
+    <link href="https://cdn.bootcss.com/aplayer/1.10.1/APlayer.min.css" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/aplayer/1.10.1/APlayer.min.js" async></script>
+  
+
+  
+    <link href="https://cdn.bootcss.com/social-share.js/1.0.16/css/share.min.css" rel="stylesheet">
+  
+  
+  <script src="//cdn.bootcss.com/jquery/3.3.1/jquery.min.js" async></script>
+  
+  
+    <script src="//cdn.jsdelivr.net/npm/leancloud-storage@3.11.0/dist/av-min.js"></script>
+  
+
+</head>
+
+  <body>
+
+    
+
+    <div id="app">
+
+      <div class="header-wrap">
+  <header>
+    <div class="site-brand">
+      <div class="site-title">
+        <a href="/">朽年的博客</a>
+      </div>
+    </div>
+    <nav class="site-navigation">
+      <ul class="nav-menu">
+      
+        <li class="nav-item" data-path="/">
+          
+            <a href="/" target="_self">
+              主页
+            </a>
+          
+        </li>
+      
+        <li class="nav-item" data-path="/archives/">
+          
+            <a href="/archives/" target="_self">
+              归档
+            </a>
+          
+        </li>
+      
+        <li class="nav-item" data-path="/categories/">
+          
+            <a href="/categories/" target="_self">
+              分类云
+            </a>
+          
+        </li>
+      
+        <li class="nav-item" data-path="/tags/">
+          
+            <a href="/tags/" target="_self">
+              标签云
+            </a>
+          
+        </li>
+      
+        <li class="nav-item" data-path="/friends/">
+          
+            <a href="/friends/" target="_self">
+              友链
+            </a>
+          
+        </li>
+      
+        <li class="nav-item" data-path="/about/">
+          
+            <a href="/about/" target="_self">
+              关于
+            </a>
+          
+        </li>
+      
+        <li class="nav-item" data-path>
+          
+            <a href="javascript:void(0);" v-else>抓到我</a>
+            <ul class="nav-menu--dropdown">
+              
+                <li>
+                  <a href="https://github.com/tangbeida" target="_blank">
+                    Github
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="https://www.zhihu.com/people/tang-bei-da-53/activities" target="_blank">
+                    知乎
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </li>
+      
+      </ul>
+    </nav>
+    <i class="iconfont icon-menu"></i>
+  </header>
+</div>
+
+<script>
+  let links = document.querySelectorAll('.nav-item');
+  for(let link of links){
+    let childrenLink = link.querySelector('ul');
+    link.addEventListener('mouseenter', () => {
+      if(childrenLink) {
+        childrenLink.className = "nav-menu--dropdown active";
+      }
+    })
+    link.addEventListener('mouseleave', () => {
+      if(childrenLink) {
+        childrenLink.className = "nav-menu--dropdown";
+      }
+    })
+  }
+  let rootRealPath = getRealPath(window.location.pathname, true);
+  for(let link of links) {
+    let linkPath = link.getAttribute("data-path");
+    if(linkPath && getRealPath(linkPath, true) === rootRealPath) {
+      link.className = "nav-item hover";
+    }
+  }
+
+  let iconMenu = document.querySelector("i.iconfont.icon-menu"),
+    iconMenuClicked = false;
+  let navDOM = document.querySelector("nav.site-navigation");
+  iconMenu.addEventListener("click", () => {
+    iconMenuClicked 
+      ? navDOM.className = "site-navigation active"
+      : navDOM.className = "site-navigation";
+    iconMenuClicked = !iconMenuClicked;
+  })
+</script>
+
+      
+
+
+
+
+
+
+
+
+<div class="container post-index">
+
+  
+
+<div class="post">
+  <h1 class="article-title">
+    <span>如何使用Typora编辑数学公式？</span>
+  </h1>
+  <div class="article-top-meta">
+    <span>
+      发布 : 
+      2019-05-14
+    </span>
+    
+      <span>
+        分类 : 
+          <a href="/categories/教程/">
+            教程
+          </a>
+      </span>
+    
+    
+      <span>
+        浏览 : <span class="article-timer" data-identity="如何使用Typora编辑数学公式？"></span>
+      </span>
+    
+  </div>
+
+  
+
+  <div class="article-content">
+    <div class="markdown-body">
+      <p>在编写一些有关于数学的笔记的时候,总是要输入一些特别麻烦的公式符号</p>
+<p>我之前一直都是使用word编辑好后，再复制到Typora</p>
+<p>这种方法效率特别低</p>
+<p>在使用Typora编写的时候，突然发现它居然有自带的公式符号编辑方式</p>
+<p>突然发现之前的自己是有多蠢</p>
+<p>emmmmmm</p>
+<p>好吧，废话不多说</p>
+<blockquote>
+<p>以下是编辑方法：</p>
+</blockquote>
+<hr>
+<h3 id="1-打开Typora选择数学模块"><a href="#1-打开Typora选择数学模块" class="headerlink" title="1. 打开Typora选择数学模块"></a>1. 打开Typora选择数学模块</h3><ul>
+<li><p>点击“段落”—&gt;“公式块”</p>
+</li>
+<li><p>快捷键Ctrl+Shift+m</p>
+</li>
+<li><p>在两个\$中间直接编辑公式</p>
+<p>例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$x^2$</span><br></pre></td></tr></table></figure>
+<p>以上三种方式都能打开数学公式的编辑栏​​</p>
+</li>
+</ul>
+<h3 id="2-常用公式代码"><a href="#2-常用公式代码" class="headerlink" title="2.常用公式代码"></a>2.常用公式代码</h3><h4 id="1-上-下标"><a href="#1-上-下标" class="headerlink" title="1.上/下标"></a>1.上/下标</h4><table>
+<thead>
+<tr>
+<th style="text-align:center">Markdown</th>
+<th style="text-align:center">效果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">x^2</td>
+<td style="text-align:center">$x^2$</td>
+</tr>
+<tr>
+<td style="text-align:center">y_1</td>
+<td style="text-align:center">$y_1$</td>
+</tr>
+</tbody>
+</table>
+<h4 id="2-分式"><a href="#2-分式" class="headerlink" title="2.分式"></a>2.分式</h4><table>
+<thead>
+<tr>
+<th style="text-align:center">Markdown</th>
+<th style="text-align:center">效果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">1/2</td>
+<td style="text-align:center">$1/2$</td>
+</tr>
+<tr>
+<td style="text-align:center">\frac{1}{2}</td>
+<td style="text-align:center">$\frac{1}{2}$</td>
+</tr>
+</tbody>
+</table>
+<h4 id="3-省略号"><a href="#3-省略号" class="headerlink" title="3.省略号"></a>3.省略号</h4><table>
+<thead>
+<tr>
+<th style="text-align:center">Markdown</th>
+<th style="text-align:center">效果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">\cdots</td>
+<td style="text-align:center">$\cdots$</td>
+</tr>
+</tbody>
+</table>
+<h4 id="4-开根号"><a href="#4-开根号" class="headerlink" title="4.开根号"></a>4.开根号</h4><table>
+<thead>
+<tr>
+<th style="text-align:center">Markdown</th>
+<th style="text-align:center">效果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">\sqrt{2}</td>
+<td style="text-align:center">$\sqrt{2}$</td>
+</tr>
+</tbody>
+</table>
+<h4 id="5-矢量"><a href="#5-矢量" class="headerlink" title="5.矢量"></a>5.矢量</h4><table>
+<thead>
+<tr>
+<th style="text-align:center">Markdown</th>
+<th style="text-align:center">效果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">\vec{b}</td>
+<td style="text-align:center">$\vec{b}$</td>
+</tr>
+</tbody>
+</table>
+<h4 id="6-积分"><a href="#6-积分" class="headerlink" title="6.积分"></a>6.积分</h4><table>
+<thead>
+<tr>
+<th style="text-align:center">Markdown</th>
+<th style="text-align:center">效果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">\int{x}dx</td>
+<td style="text-align:center">$\int{x}dx$</td>
+</tr>
+<tr>
+<td style="text-align:center">\int_{1}^{2}dx</td>
+<td style="text-align:center">$\int_{1}^{2}dx$</td>
+</tr>
+</tbody>
+</table>
+<h4 id="7-极限"><a href="#7-极限" class="headerlink" title="7.极限"></a>7.极限</h4><table>
+<thead>
+<tr>
+<th style="text-align:center">Markdown</th>
+<th style="text-align:center">效果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">\lim{a+b}</td>
+<td style="text-align:center">$\lim{a+b}$</td>
+</tr>
+<tr>
+<td style="text-align:center">\lim_{n\rightarrow+\infty}</td>
+<td style="text-align:center">$\lim_{n\rightarrow+\infty}$</td>
+</tr>
+</tbody>
+</table>
+<h4 id="8-累加"><a href="#8-累加" class="headerlink" title="8.累加"></a>8.累加</h4><table>
+<thead>
+<tr>
+<th style="text-align:center">Markdown</th>
+<th style="text-align:center">效果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">\sum{a}</td>
+<td style="text-align:center">$\sum{a}$</td>
+</tr>
+<tr>
+<td style="text-align:center">\sum_{n=1}^{100}{a_n}</td>
+<td style="text-align:center">$\sum_{n=1}^{100}{a_n}$</td>
+</tr>
+</tbody>
+</table>
+<h4 id="9-累乘"><a href="#9-累乘" class="headerlink" title="9.累乘"></a>9.累乘</h4><table>
+<thead>
+<tr>
+<th style="text-align:center">Markdown</th>
+<th style="text-align:center">效果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">\prod{x}</td>
+<td style="text-align:center">$\prod{x}$</td>
+</tr>
+<tr>
+<td style="text-align:center">\prod_{n=1}^{99}{x_n}</td>
+<td style="text-align:center">$\prod_{n=1}^{99}{x_n}$</td>
+</tr>
+</tbody>
+</table>
+<h4 id="10-三角函数"><a href="#10-三角函数" class="headerlink" title="10.三角函数"></a>10.三角函数</h4><table>
+<thead>
+<tr>
+<th style="text-align:center">Markdown</th>
+<th style="text-align:center">效果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">\sin</td>
+<td style="text-align:center">$\sin$</td>
+</tr>
+<tr>
+<td style="text-align:center">\cos</td>
+<td style="text-align:center">$\cos$</td>
+</tr>
+<tr>
+<td style="text-align:center">\tan</td>
+<td style="text-align:center">$\tan$</td>
+</tr>
+</tbody>
+</table>
+<h4 id="11-对数函数"><a href="#11-对数函数" class="headerlink" title="11.对数函数"></a>11.对数函数</h4><table>
+<thead>
+<tr>
+<th style="text-align:center">Markdown</th>
+<th style="text-align:center">效果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">\ln3</td>
+<td style="text-align:center">$\ln3$</td>
+</tr>
+<tr>
+<td style="text-align:center">\log_27</td>
+<td style="text-align:center">$\log_27$</td>
+</tr>
+<tr>
+<td style="text-align:center">\lg2</td>
+<td style="text-align:center">$\lg2$</td>
+</tr>
+</tbody>
+</table>
+<h4 id="12-关系运算符"><a href="#12-关系运算符" class="headerlink" title="12.关系运算符"></a>12.关系运算符</h4><table>
+<thead>
+<tr>
+<th style="text-align:center">Markdown</th>
+<th style="text-align:center">效果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">\pm</td>
+<td style="text-align:center">$\pm$</td>
+</tr>
+<tr>
+<td style="text-align:center">\times</td>
+<td style="text-align:center">$\times$</td>
+</tr>
+<tr>
+<td style="text-align:center">\cdot</td>
+<td style="text-align:center">$\cdot$</td>
+</tr>
+<tr>
+<td style="text-align:center">\div</td>
+<td style="text-align:center">$\div$</td>
+</tr>
+<tr>
+<td style="text-align:center">\neq</td>
+<td style="text-align:center">$\neq$</td>
+</tr>
+<tr>
+<td style="text-align:center">\equiv</td>
+<td style="text-align:center">$\equiv$</td>
+</tr>
+<tr>
+<td style="text-align:center">\leq</td>
+<td style="text-align:center">$\leq$</td>
+</tr>
+<tr>
+<td style="text-align:center">\geq</td>
+<td style="text-align:center">$\geq$</td>
+</tr>
+</tbody>
+</table>
+<h4 id="13-花括弧"><a href="#13-花括弧" class="headerlink" title="13.花括弧"></a>13.花括弧</h4><p>$y(x)=\begin{cases} \sqrt\frac{1}{X}，x=0\ \sqrt\frac{2}{X}， x\neq0\end{cases}$</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$y(x)=\begin&#123;cases&#125; \sqrt\frac&#123;1&#125;&#123;X&#125;，x=0\ \sqrt\frac&#123;2&#125;&#123;X&#125;， u\neq0\end&#123;cases&#125;$</span><br></pre></td></tr></table></figure>
+<h4 id="14-希腊字母"><a href="#14-希腊字母" class="headerlink" title="14.希腊字母"></a>14.希腊字母</h4><table>
+<thead>
+<tr>
+<th style="text-align:center">Markdown</th>
+<th style="text-align:center">大写</th>
+<th style="text-align:center">Markdown</th>
+<th style="text-align:center">小写</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">A</td>
+<td style="text-align:center">$A$</td>
+<td style="text-align:center">\alpha</td>
+<td style="text-align:center">$\alpha$</td>
+</tr>
+<tr>
+<td style="text-align:center">B</td>
+<td style="text-align:center">$B$</td>
+<td style="text-align:center">\beta</td>
+<td style="text-align:center">$\beta$</td>
+</tr>
+<tr>
+<td style="text-align:center">\Gamma</td>
+<td style="text-align:center">$\Gamma$</td>
+<td style="text-align:center">\gamma</td>
+<td style="text-align:center">$\gamma$</td>
+</tr>
+<tr>
+<td style="text-align:center">\Delta</td>
+<td style="text-align:center">$\Delta$</td>
+<td style="text-align:center">\delta</td>
+<td style="text-align:center">$\delta$</td>
+</tr>
+<tr>
+<td style="text-align:center">E</td>
+<td style="text-align:center">$E$</td>
+<td style="text-align:center">\epsilon</td>
+<td style="text-align:center">$\epsilon$</td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">\varepsilon</td>
+<td style="text-align:center">$\varepsilon$</td>
+</tr>
+<tr>
+<td style="text-align:center">Z</td>
+<td style="text-align:center">$Z$</td>
+<td style="text-align:center">\zeta</td>
+<td style="text-align:center">$\zeta$</td>
+</tr>
+<tr>
+<td style="text-align:center">H</td>
+<td style="text-align:center">$H$</td>
+<td style="text-align:center">\eta</td>
+<td style="text-align:center">$\eta$</td>
+</tr>
+<tr>
+<td style="text-align:center">\Theta</td>
+<td style="text-align:center">$\Theta$</td>
+<td style="text-align:center">\theta</td>
+<td style="text-align:center">$\theta$</td>
+</tr>
+<tr>
+<td style="text-align:center">I</td>
+<td style="text-align:center">$I$</td>
+<td style="text-align:center">\iota</td>
+<td style="text-align:center">$\iota$</td>
+</tr>
+<tr>
+<td style="text-align:center">K</td>
+<td style="text-align:center">$K$</td>
+<td style="text-align:center">\kappa</td>
+<td style="text-align:center">$\kappa$</td>
+</tr>
+<tr>
+<td style="text-align:center">\Lambda</td>
+<td style="text-align:center">$\Lambda$</td>
+<td style="text-align:center">\lambda</td>
+<td style="text-align:center">$\lambda$</td>
+</tr>
+<tr>
+<td style="text-align:center">M</td>
+<td style="text-align:center">$M$</td>
+<td style="text-align:center">\mu</td>
+<td style="text-align:center">$\mu$</td>
+</tr>
+<tr>
+<td style="text-align:center">N</td>
+<td style="text-align:center">$N$</td>
+<td style="text-align:center">\nu</td>
+<td style="text-align:center">$\nu$</td>
+</tr>
+<tr>
+<td style="text-align:center">\Xi</td>
+<td style="text-align:center">$\Xi$</td>
+<td style="text-align:center">\xi</td>
+<td style="text-align:center">$\xi$</td>
+</tr>
+<tr>
+<td style="text-align:center">O</td>
+<td style="text-align:center">$O$</td>
+<td style="text-align:center">\omicron</td>
+<td style="text-align:center">$\omicron$</td>
+</tr>
+<tr>
+<td style="text-align:center">\Pi</td>
+<td style="text-align:center">$\Pi$</td>
+<td style="text-align:center">\pi</td>
+<td style="text-align:center">$\pi$</td>
+</tr>
+<tr>
+<td style="text-align:center">P</td>
+<td style="text-align:center">$P$</td>
+<td style="text-align:center">\rho</td>
+<td style="text-align:center">$\rho$</td>
+</tr>
+<tr>
+<td style="text-align:center">\Sigma</td>
+<td style="text-align:center">$\Sigma$</td>
+<td style="text-align:center">\sigma</td>
+<td style="text-align:center">$\sigma$</td>
+</tr>
+<tr>
+<td style="text-align:center">T</td>
+<td style="text-align:center">$T$</td>
+<td style="text-align:center">\tau</td>
+<td style="text-align:center">$\tau$</td>
+</tr>
+<tr>
+<td style="text-align:center">\Upsilon</td>
+<td style="text-align:center">$\Upsilon$</td>
+<td style="text-align:center">\upsilon</td>
+<td style="text-align:center">$\upsilon$</td>
+</tr>
+<tr>
+<td style="text-align:center">\Phi</td>
+<td style="text-align:center">$\Phi$</td>
+<td style="text-align:center">\phi</td>
+<td style="text-align:center">$\phi$</td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">\varphi</td>
+<td style="text-align:center">$\varphi$</td>
+</tr>
+<tr>
+<td style="text-align:center">X</td>
+<td style="text-align:center">$X$</td>
+<td style="text-align:center">\chi</td>
+<td style="text-align:center">$\chi$</td>
+</tr>
+<tr>
+<td style="text-align:center">\Psi</td>
+<td style="text-align:center">$\Psi$</td>
+<td style="text-align:center">\psi</td>
+<td style="text-align:center">$\psi$</td>
+</tr>
+<tr>
+<td style="text-align:center">\Omega</td>
+<td style="text-align:center">$\Omega$</td>
+<td style="text-align:center">\omega</td>
+<td style="text-align:center">$\omega$</td>
+</tr>
+</tbody>
+</table>
+<h4 id="15-特殊字符"><a href="#15-特殊字符" class="headerlink" title="15.特殊字符"></a>15.特殊字符</h4><table>
+<thead>
+<tr>
+<th style="text-align:center">Markdown</th>
+<th style="text-align:center">效果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">\forall</td>
+<td style="text-align:center">$\forall$</td>
+</tr>
+<tr>
+<td style="text-align:center">\infty</td>
+<td style="text-align:center">$\infty$</td>
+</tr>
+<tr>
+<td style="text-align:center">\emptyset</td>
+<td style="text-align:center">$\emptyset$</td>
+</tr>
+<tr>
+<td style="text-align:center">\exists</td>
+<td style="text-align:center">$\exists$</td>
+</tr>
+<tr>
+<td style="text-align:center">\nabla</td>
+<td style="text-align:center">$\nabla$</td>
+</tr>
+<tr>
+<td style="text-align:center">\bot</td>
+<td style="text-align:center">$\bot$</td>
+</tr>
+<tr>
+<td style="text-align:center">\angle</td>
+<td style="text-align:center">$\angle$</td>
+</tr>
+<tr>
+<td style="text-align:center">\because</td>
+<td style="text-align:center">$\because$</td>
+</tr>
+<tr>
+<td style="text-align:center">\therefore</td>
+<td style="text-align:center">$\therefore$</td>
+</tr>
+</tbody>
+</table>
+<h4 id="16-空格"><a href="#16-空格" class="headerlink" title="16.空格"></a>16.空格</h4><p>$a \quad b$</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$a \quad b$</span><br></pre></td></tr></table></figure>
+    </div>
+  </div>
+  
+    <div class="copy-right">
+      <div class="markdown-body">
+        <blockquote>
+        
+        
+          本文作者 : 朽年 <br>
+        
+        原文链接 : <a href>http://yoursite.com/passages/如何使用Typora编辑数学公式？/</a><br>
+        版权声明 : 本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
+        </blockquote>
+      </div>
+    </div>
+  
+  
+  
+    <div class="social-share" style="margin-top: -2rem" data-wechat-qrcode-title="<p>微信扫一扫</p>" data-wechat-qrcode-helper="<p>微信右上角, 扫一扫分享</p>" data-sites="qzone, qq, weibo, wechat, douban, google, facebook, twitter">
+  <span style="color: #6b7487; font-size: 1.4rem;">分享到: </span>
+</div>
+<script src="https://cdn.bootcss.com/social-share.js/1.0.16/js/social-share.min.js" async></script>
+  
+
+  
+    <div id="reward">
+  
+    <p id="reward-meta">知识 & 情怀 | 二者兼得</p>
+  
+  <button id="reward-btn">
+    
+    <span>投食</span>
+  </button>
+  <div id="reward-qrcode">
+    
+      <div class="reward-qrcode--container">
+        <img class="qrcode-img" src="https://tangbeida.oss-cn-hangzhou.aliyuncs.com/image/MY_ID/%E5%BE%AE%E4%BF%A1.jpg" alt="微信扫一扫, 向我投食">
+        <p class="qrcode-meta">微信扫一扫, 向我投食</p>
+      </div>
+    
+      <div class="reward-qrcode--container">
+        <img class="qrcode-img" src="https://tangbeida.oss-cn-hangzhou.aliyuncs.com/image/MY_ID/%E6%94%AF%E4%BB%98%E5%AE%9D.jpg" alt="支付宝扫一扫, 向我投食">
+        <p class="qrcode-meta">支付宝扫一扫, 向我投食</p>
+      </div>
+    
+  </div>
+
+</div>
+
+<script>
+  (() => {
+    let button = document.querySelector('#reward-btn'),
+      qrcode = document.querySelector('#reward-qrcode'),
+      display = false;
+    
+    button.addEventListener('click', () => {
+      qrcode.style.display = display ? 'none' : 'block'
+      display = !display
+    }, false)
+  })()
+</script>
+  
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+      <span>
+        
+          <i class="iconfont icon-06tags"></i>标签: 
+          
+          <span class="span--tag">
+            <a href="/tags/Typora/">
+              #Typora
+            </a>
+          </span>
+          
+        
+      </span>
+    </div>
+    <div class="article-meta pull-right">
+    </div>
+  </div>
+</div>
+
+
+  <aside id="sidebar">
+    <p id="sidebar-header"></p>
+    <ol id="sidebar-toc"></ol>
+  </aside>
+  <script async>setTimeout(generateToc, 10);</script>
+
+
+  <nav class="post-navigation">
+    
+      <div class="nav-pre">
+        <i class="iconfont icon-prev"></i>
+        上一篇:
+        <a href="/passages/MySQL学习笔记/" target="_self">MySQL学习笔记</a>
+      </div>
+    
+    
+  </nav>
+
+  
+    <a href="#comment" class="comment-anchor"></a>
+<div class="comment-title"><i class="iconfont icon-footprint"></i> 留下足迹 <i class="iconfont icon-footprint"></i></div>
+<div id="vcomments"></div>
+
+<script defer>
+  if( true ) {
+    let path = getRealPath()
+    new Valine({
+      el: "#vcomments",
+      appId: "5Sml225fSWFOKRJENmDKJ9zq-gzGzoHsz",
+      appKey: "mUMq9vR0KdKnzhpos9uPpyXo",
+      notify: false,
+      verify: false,
+      avatar: "robohash",
+      placeholder: "正确填写邮箱, 才能及时收到回复哦♪(^∇^*)",
+      path
+    });
+  }
+</script>
+   
+
+  
+    <script defer>
+const valineAPI = (() => {
+  try {
+    AV.init("5Sml225fSWFOKRJENmDKJ9zq-gzGzoHsz", "mUMq9vR0KdKnzhpos9uPpyXo");
+  } catch(error) {}
+  const isExist = (identity) => {
+    identity = identity || getRealPath();
+    let query = new AV.Query('Timer');
+    return new Promise((resolve, reject) => {
+      query.equalTo("identity", identity);
+      query.find().then(results => {
+        resolve(results.length > 0);
+      }, error => reject(error));
+    })
+  }
+
+  const _get = (identity) => {
+    let query = null;
+    if(identity && identity instanceof Array){
+      let querys = [];
+      for(let i = 0; i < identity.length; ++i) {
+        querys[i] = new AV.Query('Timer');
+        querys[i].equalTo('identity', identity[i]);
+      }
+      query = AV.Query.or.apply(null ,querys);
+    } else {
+      identity = identity || getRealPath();
+      query = new AV.Query("Timer");
+      query.equalTo("identity", identity);
+    }
+
+    return new Promise((resolve, reject) => {
+      query.find()
+      .then(results => resolve(results))
+      .catch(error => reject(error))
+    })
+  }
+
+  const create = (identity) => {
+    identity = identity || getRealPath();
+    return new Promise((resolve, reject) => {
+      let Todo = AV.Object.extend('Timer');
+      let todo = new Todo();
+      todo.set("times", 1);
+      todo.set("identity", identity);
+      todo.save().then(res => resolve(true), error => reject(error));
+    })
+  }
+
+  const update = (identity) => {
+    identity = identity || getRealPath();
+    return new Promise((resolve, reject) => {
+      let query = new AV.Query('Timer');
+      query.equalTo("identity", identity);
+      query.find().then(todos => {
+        todos.forEach(todo => {
+          todo.set("times", todo.attributes.times + 1);
+        });
+        return AV.Object.saveAll(todos);
+      }).then(todos => resolve(true), error => reject(error));
+    })
+  }
+
+  return {
+    isExist,
+    _get,
+    update,
+    create
+  }
+})()
+
+const calcAndWriteTimes = () => {
+  let isPost = true;
+
+  let timerAllDOM = document.querySelectorAll(".article-timer");
+
+  if(isPost) {
+    let identity = timerAllDOM[0].getAttribute("data-identity");
+    valineAPI.isExist(identity)
+    .then(exist => {
+      if(exist) {
+        return valineAPI.update(identity);
+      }
+      return new Promise(resolve => resolve(true));
+    })
+    .then( succuess => valineAPI._get(identity))
+    .then( result => timerAllDOM[0].innerText = result[0].attributes.times)
+    .catch(error => console.log(error.message))
+    return ;
+  }
+
+  let timerDOMCache = {};
+
+  for(let timerDOM of timerAllDOM) {
+    let identity = timerDOM.getAttribute("data-identity");
+    if(timerDOMCache.hasOwnProperty(identity)){
+      timerDOMCache[identity].dom.push(timerDOM);
+    }else{
+      timerDOMCache[identity] = {
+        dom: [timerDOM],
+        times: undefined
+      };
+    }
+  }
+
+  let identities = Object.keys(timerDOMCache);
+  valineAPI._get(identities).then(results => {
+    for(let result of results) {
+      let {identity, times} = result.attributes;
+      timerDOMCache[identity].times = times;
+      timerDOMCache[identity].dom.map(item => item.innerText = times);
+    }
+    for(let identity of identities) {
+      if(timerDOMCache[identity].times){
+        continue;
+      }
+      timerDOMCache[identity].dom.map(item => item.innerText = 1);
+      valineAPI.create(identity);
+    }
+  }).catch(error => console.log(error.message))
+}
+
+if(true){
+  calcAndWriteTimes();
+}
+</script>
+   
+
+</div>
+
+
+      <footer>
+  <p class="site-info">
+    博客已萌萌哒运行<span id="time-to-now"></span><span class="my-face">(●'◡'●)ﾉ♥</span>
+    <br>
+    Theme - <a href="https://github.com/dongyuanxin/theme-bmw">BMW</a> | Made With 💗 | Powered by <a href="https://godbmw.com/">GodBMW</a>
+    <br>
+    
+      <a href="https://www.google.com/analytics/" target="_blank">Google Analytics</a>提供统计服务
+    
+  </p>
+</footer>
+
+
+
+<script>
+const timeToNowDOM = document.querySelector("#time-to-now");
+const startTimestamp = new Date(2017, 3, 29).getTime();
+
+const updateTimeStr = () => {
+  let offset = parseInt(
+      (new Date().getTime() - startTimestamp) / 1000,
+      10
+    ),
+    day = Math.floor(offset / 86400),
+    hour = Math.floor((offset % 86400) / 3600),
+    minute = Math.floor(((offset % 86400) % 3600) / 60),
+    second = Math.floor(((offset % 86400) % 3600) % 60);
+  timeToNowDOM.innerHTML =
+    day + "天" + hour + "小时" + minute + "分钟" + second + "秒";
+  setTimeout(updateTimeStr, 500);
+}
+
+setTimeout(updateTimeStr, 500);
+</script>
+
+
+      <div class="back-to-top hidden">
+  <span>
+    <i class="iconfont icon-60"></i><span></span>%
+  </span>
+</div>
+
+<script>
+const updateIconToTop = percent => {
+  let dom = document.querySelector(".back-to-top span span");
+  dom.innerText = percent;
+  if(percent < 1) {
+    document.querySelector(".back-to-top").className = "back-to-top hidden";
+  } else {
+    document.querySelector(".back-to-top").className = "back-to-top";
+  }
+}
+
+const handleScoll = () => {
+  let isRunning = false;
+  return () => {
+    if (isRunning) return;
+    isRunning = true;
+    window.requestAnimationFrame(timestamp => {
+      let scrollTop =
+          document.documentElement.scrollTop || document.body.scrollTop,
+        scrollHeight =
+          document.documentElement.scrollHeight ||
+          document.body.scrollHeight,
+        clientHeight =
+          document.documentElement.clientHeight ||
+          document.body.clientHeight;
+      isRunning = false;
+      if (scrollTop <= 1) {
+        updateIconToTop(0);
+        return;
+      }
+      if (scrollTop + clientHeight >= scrollHeight) {
+        updateIconToTop(100);
+      } else {
+        updateIconToTop(parseInt(
+          100 * scrollTop / (scrollHeight - clientHeight),
+          10
+        ));
+      }
+    });
+  };
+}
+
+const backToTop = () => {
+  let scrollTop =
+      document.documentElement.scrollTop || document.body.scrollTop,
+    delay = 10,
+    time = 200;
+  if (scrollTop <= 20) {
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+    return;
+  }
+  let step = Math.ceil(scrollTop * delay / time);
+  let timer = setInterval(() => {
+    scrollTop =
+      document.documentElement.scrollTop || document.body.scrollTop;
+    if (scrollTop - step <= 0) {
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+      clearInterval(timer);
+    } else {
+      document.documentElement.scrollTop = scrollTop - step;
+      document.body.scrollTop = scrollTop - step;
+    }
+  }, delay);
+}
+
+document.addEventListener("scroll", handleScoll(), false);
+
+document.querySelector(".back-to-top").addEventListener("click", backToTop, false);
+
+</script>
+
+    </div>
+
+    
+      <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+<script>
+  (() => {
+    const mathjaxConfig = {
+      showProcessingMessages: false, //关闭js加载过程信息
+      messageStyle: "none", //不显示信息
+      jax: ["input/TeX", "output/HTML-CSS"],
+      tex2jax: {
+        inlineMath: [["$", "$"], ["\\(", "\\)"]], //行内公式选择符
+        displayMath: [["$$", "$$"], ["\\[", "\\]"]], //段内公式选择符
+        skipTags: ["script", "noscript", "style", "textarea", "pre", "code", "a"] //避开某些标签
+      },
+      "HTML-CSS": {
+        availableFonts: ["STIX", "TeX"], //可选字体
+        showMathMenu: false //关闭右击菜单显示
+      }
+    }
+
+    let mathjaxInterval = setInterval(() => {
+      if(!window.MathJax){
+        return;
+      }
+      window.MathJax.Hub.Config(mathjaxConfig)
+      window.MathJax.Hub.Queue(["Typeset", MathJax.Hub, document.getElementById('app')])
+
+      clearInterval(mathjaxInterval)
+    }, 10)    
+  })()
+</script>
+    
+
+    <script src="https://cdn.bootcss.com/fancybox/3.5.2/jquery.fancybox.min.js" async></script>
+<script async>
+  let fancyTimer = setInterval(function(){
+    if(!window.$){
+      return;
+    }
+    $(document).ready(function() {
+      $(".post img").each(function () {
+        if($(this).parent().get(0).tagName.toLowerCase() === "a") {
+          return;
+        }
+        // $(this).attr("data-fancybox", "gallery"); // if you add 'data-fancybox', img will display after showed
+        var element = document.createElement("a");
+        $(element).attr("data-fancybox", "gallery");
+        $(element).attr("href", $(this).attr("src"));
+        $(this).wrap(element);
+      });
+      
+      clearInterval(fancyTimer);
+    });
+  }, 10);
+</script>
+
+    
+  </body>
+
+</html>
