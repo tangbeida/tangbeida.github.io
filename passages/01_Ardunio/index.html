@@ -8,12 +8,12 @@
   
   
   
-  <title>如何使用Typora编辑数学公式？ | 朽年的博客</title>
+  <title>Ardunio如何使用EEPROM保存数据？ | 朽年的博客</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
   
-    <meta name="keywords" content="教程,Typora,">
+    <meta name="keywords" content="Arduino,Ardunio,教程,">
   
 
   <script>
@@ -197,24 +197,24 @@
 
 <div class="post">
   <h1 class="article-title">
-    <span>如何使用Typora编辑数学公式？</span>
+    <span>Ardunio如何使用EEPROM保存数据？</span>
   </h1>
   <div class="article-top-meta">
     <span>
       发布 : 
-      2019-05-14
+      2019-05-28
     </span>
     
       <span>
         分类 : 
-          <a href="/categories/教程/">
-            教程
+          <a href="/categories/Arduino/">
+            Arduino
           </a>
       </span>
     
     
       <span>
-        浏览 : <span class="article-timer" data-identity="如何使用Typora编辑数学公式？"></span>
+        浏览 : <span class="article-timer" data-identity="01_Ardunio"></span>
       </span>
     
   </div>
@@ -223,482 +223,36 @@
 
   <div class="article-content">
     <div class="markdown-body">
-      <p>在编写一些有关于数学的笔记的时候,总是要输入一些特别麻烦的公式符号</p>
-<p>我之前一直都是使用word编辑好后，再复制到Typora</p>
-<p>这种方法效率特别低</p>
-<p>在使用Typora编写的时候，突然发现它居然有自带的公式符号编辑方式</p>
-<p>突然发现之前的自己是有多蠢</p>
-<p>emmmmmm</p>
-<p>好吧，废话不多说</p>
+      <p></p>
+<h1 id="Ardunio如何使用EEPROM保存数据？"><a href="#Ardunio如何使用EEPROM保存数据？" class="headerlink" title="Ardunio如何使用EEPROM保存数据？"></a>Ardunio如何使用EEPROM保存数据？</h1><p>arduino已经为我们准备好了EEPROM类库<strong>”EEPROM.h”</strong>，我们要使用得先调用<strong>EEPROM.h</strong>，然后使用<strong>write</strong>和<strong>read</strong>方法，即可操作<strong>EEPROM</strong></p>
+<p>####1.  写入方法： EEPROM.write(address,value);</p>
 <blockquote>
-<p>以下是编辑方法：</p>
+<p>代码示例如下：</p>
 </blockquote>
-<hr>
-<h3 id="1-打开Typora选择数学模块"><a href="#1-打开Typora选择数学模块" class="headerlink" title="1. 打开Typora选择数学模块"></a>1. 打开Typora选择数学模块</h3><ul>
-<li><p>点击“段落”—&gt;“公式块”</p>
-</li>
-<li><p>快捷键Ctrl+Shift+m</p>
-</li>
-<li><p>在两个\$中间直接编辑公式</p>
-<p>例如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$x^2$</span><br></pre></td></tr></table></figure>
-<p>以上三种方式都能打开数学公式的编辑栏​​</p>
-</li>
-</ul>
-<h3 id="2-常用公式代码"><a href="#2-常用公式代码" class="headerlink" title="2.常用公式代码"></a>2.常用公式代码</h3><h4 id="1-上-下标"><a href="#1-上-下标" class="headerlink" title="1.上/下标"></a>1.上/下标</h4><table>
-<thead>
-<tr>
-<th style="text-align:center">Markdown</th>
-<th style="text-align:center">效果</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">x^2</td>
-<td style="text-align:center">$x^2$</td>
-</tr>
-<tr>
-<td style="text-align:center">y_1</td>
-<td style="text-align:center">$y_1$</td>
-</tr>
-</tbody>
-</table>
-<h4 id="2-分式"><a href="#2-分式" class="headerlink" title="2.分式"></a>2.分式</h4><table>
-<thead>
-<tr>
-<th style="text-align:center">Markdown</th>
-<th style="text-align:center">效果</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">1/2</td>
-<td style="text-align:center">$1/2$</td>
-</tr>
-<tr>
-<td style="text-align:center">\frac{1}{2}</td>
-<td style="text-align:center">$\frac{1}{2}$</td>
-</tr>
-</tbody>
-</table>
-<h4 id="3-省略号"><a href="#3-省略号" class="headerlink" title="3.省略号"></a>3.省略号</h4><table>
-<thead>
-<tr>
-<th style="text-align:center">Markdown</th>
-<th style="text-align:center">效果</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">\cdots</td>
-<td style="text-align:center">$\cdots$</td>
-</tr>
-</tbody>
-</table>
-<h4 id="4-开根号"><a href="#4-开根号" class="headerlink" title="4.开根号"></a>4.开根号</h4><table>
-<thead>
-<tr>
-<th style="text-align:center">Markdown</th>
-<th style="text-align:center">效果</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">\sqrt{2}</td>
-<td style="text-align:center">$\sqrt{2}$</td>
-</tr>
-</tbody>
-</table>
-<h4 id="5-矢量"><a href="#5-矢量" class="headerlink" title="5.矢量"></a>5.矢量</h4><table>
-<thead>
-<tr>
-<th style="text-align:center">Markdown</th>
-<th style="text-align:center">效果</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">\vec{b}</td>
-<td style="text-align:center">$\vec{b}$</td>
-</tr>
-</tbody>
-</table>
-<h4 id="6-积分"><a href="#6-积分" class="headerlink" title="6.积分"></a>6.积分</h4><table>
-<thead>
-<tr>
-<th style="text-align:center">Markdown</th>
-<th style="text-align:center">效果</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">\int{x}dx</td>
-<td style="text-align:center">$\int{x}dx$</td>
-</tr>
-<tr>
-<td style="text-align:center">\int_{1}^{2}dx</td>
-<td style="text-align:center">$\int_{1}^{2}dx$</td>
-</tr>
-</tbody>
-</table>
-<h4 id="7-极限"><a href="#7-极限" class="headerlink" title="7.极限"></a>7.极限</h4><table>
-<thead>
-<tr>
-<th style="text-align:center">Markdown</th>
-<th style="text-align:center">效果</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">\lim{a+b}</td>
-<td style="text-align:center">$\lim{a+b}$</td>
-</tr>
-<tr>
-<td style="text-align:center">\lim_{n\rightarrow+\infty}</td>
-<td style="text-align:center">$\lim_{n\rightarrow+\infty}$</td>
-</tr>
-</tbody>
-</table>
-<h4 id="8-累加"><a href="#8-累加" class="headerlink" title="8.累加"></a>8.累加</h4><table>
-<thead>
-<tr>
-<th style="text-align:center">Markdown</th>
-<th style="text-align:center">效果</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">\sum{a}</td>
-<td style="text-align:center">$\sum{a}$</td>
-</tr>
-<tr>
-<td style="text-align:center">\sum_{n=1}^{100}{a_n}</td>
-<td style="text-align:center">$\sum_{n=1}^{100}{a_n}$</td>
-</tr>
-</tbody>
-</table>
-<h4 id="9-累乘"><a href="#9-累乘" class="headerlink" title="9.累乘"></a>9.累乘</h4><table>
-<thead>
-<tr>
-<th style="text-align:center">Markdown</th>
-<th style="text-align:center">效果</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">\prod{x}</td>
-<td style="text-align:center">$\prod{x}$</td>
-</tr>
-<tr>
-<td style="text-align:center">\prod_{n=1}^{99}{x_n}</td>
-<td style="text-align:center">$\prod_{n=1}^{99}{x_n}$</td>
-</tr>
-</tbody>
-</table>
-<h4 id="10-三角函数"><a href="#10-三角函数" class="headerlink" title="10.三角函数"></a>10.三角函数</h4><table>
-<thead>
-<tr>
-<th style="text-align:center">Markdown</th>
-<th style="text-align:center">效果</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">\sin</td>
-<td style="text-align:center">$\sin$</td>
-</tr>
-<tr>
-<td style="text-align:center">\cos</td>
-<td style="text-align:center">$\cos$</td>
-</tr>
-<tr>
-<td style="text-align:center">\tan</td>
-<td style="text-align:center">$\tan$</td>
-</tr>
-</tbody>
-</table>
-<h4 id="11-对数函数"><a href="#11-对数函数" class="headerlink" title="11.对数函数"></a>11.对数函数</h4><table>
-<thead>
-<tr>
-<th style="text-align:center">Markdown</th>
-<th style="text-align:center">效果</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">\ln3</td>
-<td style="text-align:center">$\ln3$</td>
-</tr>
-<tr>
-<td style="text-align:center">\log_27</td>
-<td style="text-align:center">$\log_27$</td>
-</tr>
-<tr>
-<td style="text-align:center">\lg2</td>
-<td style="text-align:center">$\lg2$</td>
-</tr>
-</tbody>
-</table>
-<h4 id="12-关系运算符"><a href="#12-关系运算符" class="headerlink" title="12.关系运算符"></a>12.关系运算符</h4><table>
-<thead>
-<tr>
-<th style="text-align:center">Markdown</th>
-<th style="text-align:center">效果</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">\pm</td>
-<td style="text-align:center">$\pm$</td>
-</tr>
-<tr>
-<td style="text-align:center">\times</td>
-<td style="text-align:center">$\times$</td>
-</tr>
-<tr>
-<td style="text-align:center">\cdot</td>
-<td style="text-align:center">$\cdot$</td>
-</tr>
-<tr>
-<td style="text-align:center">\div</td>
-<td style="text-align:center">$\div$</td>
-</tr>
-<tr>
-<td style="text-align:center">\neq</td>
-<td style="text-align:center">$\neq$</td>
-</tr>
-<tr>
-<td style="text-align:center">\equiv</td>
-<td style="text-align:center">$\equiv$</td>
-</tr>
-<tr>
-<td style="text-align:center">\leq</td>
-<td style="text-align:center">$\leq$</td>
-</tr>
-<tr>
-<td style="text-align:center">\geq</td>
-<td style="text-align:center">$\geq$</td>
-</tr>
-</tbody>
-</table>
-<h4 id="13-花括弧"><a href="#13-花括弧" class="headerlink" title="13.花括弧"></a>13.花括弧</h4><p>$y(x)=\begin{cases} \sqrt\frac{1}{X}，x=0\ \sqrt\frac{2}{X}， x\neq0\end{cases}$</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$y(x)=\begin&#123;cases&#125; \sqrt\frac&#123;1&#125;&#123;X&#125;，x=0\ \sqrt\frac&#123;2&#125;&#123;X&#125;， u\neq0\end&#123;cases&#125;$</span><br></pre></td></tr></table></figure>
-<h4 id="14-希腊字母"><a href="#14-希腊字母" class="headerlink" title="14.希腊字母"></a>14.希腊字母</h4><table>
-<thead>
-<tr>
-<th style="text-align:center">Markdown</th>
-<th style="text-align:center">大写</th>
-<th style="text-align:center">Markdown</th>
-<th style="text-align:center">小写</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">A</td>
-<td style="text-align:center">$A$</td>
-<td style="text-align:center">\alpha</td>
-<td style="text-align:center">$\alpha$</td>
-</tr>
-<tr>
-<td style="text-align:center">B</td>
-<td style="text-align:center">$B$</td>
-<td style="text-align:center">\beta</td>
-<td style="text-align:center">$\beta$</td>
-</tr>
-<tr>
-<td style="text-align:center">\Gamma</td>
-<td style="text-align:center">$\Gamma$</td>
-<td style="text-align:center">\gamma</td>
-<td style="text-align:center">$\gamma$</td>
-</tr>
-<tr>
-<td style="text-align:center">\Delta</td>
-<td style="text-align:center">$\Delta$</td>
-<td style="text-align:center">\delta</td>
-<td style="text-align:center">$\delta$</td>
-</tr>
-<tr>
-<td style="text-align:center">E</td>
-<td style="text-align:center">$E$</td>
-<td style="text-align:center">\epsilon</td>
-<td style="text-align:center">$\epsilon$</td>
-</tr>
-<tr>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-<td style="text-align:center">\varepsilon</td>
-<td style="text-align:center">$\varepsilon$</td>
-</tr>
-<tr>
-<td style="text-align:center">Z</td>
-<td style="text-align:center">$Z$</td>
-<td style="text-align:center">\zeta</td>
-<td style="text-align:center">$\zeta$</td>
-</tr>
-<tr>
-<td style="text-align:center">H</td>
-<td style="text-align:center">$H$</td>
-<td style="text-align:center">\eta</td>
-<td style="text-align:center">$\eta$</td>
-</tr>
-<tr>
-<td style="text-align:center">\Theta</td>
-<td style="text-align:center">$\Theta$</td>
-<td style="text-align:center">\theta</td>
-<td style="text-align:center">$\theta$</td>
-</tr>
-<tr>
-<td style="text-align:center">I</td>
-<td style="text-align:center">$I$</td>
-<td style="text-align:center">\iota</td>
-<td style="text-align:center">$\iota$</td>
-</tr>
-<tr>
-<td style="text-align:center">K</td>
-<td style="text-align:center">$K$</td>
-<td style="text-align:center">\kappa</td>
-<td style="text-align:center">$\kappa$</td>
-</tr>
-<tr>
-<td style="text-align:center">\Lambda</td>
-<td style="text-align:center">$\Lambda$</td>
-<td style="text-align:center">\lambda</td>
-<td style="text-align:center">$\lambda$</td>
-</tr>
-<tr>
-<td style="text-align:center">M</td>
-<td style="text-align:center">$M$</td>
-<td style="text-align:center">\mu</td>
-<td style="text-align:center">$\mu$</td>
-</tr>
-<tr>
-<td style="text-align:center">N</td>
-<td style="text-align:center">$N$</td>
-<td style="text-align:center">\nu</td>
-<td style="text-align:center">$\nu$</td>
-</tr>
-<tr>
-<td style="text-align:center">\Xi</td>
-<td style="text-align:center">$\Xi$</td>
-<td style="text-align:center">\xi</td>
-<td style="text-align:center">$\xi$</td>
-</tr>
-<tr>
-<td style="text-align:center">O</td>
-<td style="text-align:center">$O$</td>
-<td style="text-align:center">\omicron</td>
-<td style="text-align:center">$\omicron$</td>
-</tr>
-<tr>
-<td style="text-align:center">\Pi</td>
-<td style="text-align:center">$\Pi$</td>
-<td style="text-align:center">\pi</td>
-<td style="text-align:center">$\pi$</td>
-</tr>
-<tr>
-<td style="text-align:center">P</td>
-<td style="text-align:center">$P$</td>
-<td style="text-align:center">\rho</td>
-<td style="text-align:center">$\rho$</td>
-</tr>
-<tr>
-<td style="text-align:center">\Sigma</td>
-<td style="text-align:center">$\Sigma$</td>
-<td style="text-align:center">\sigma</td>
-<td style="text-align:center">$\sigma$</td>
-</tr>
-<tr>
-<td style="text-align:center">T</td>
-<td style="text-align:center">$T$</td>
-<td style="text-align:center">\tau</td>
-<td style="text-align:center">$\tau$</td>
-</tr>
-<tr>
-<td style="text-align:center">\Upsilon</td>
-<td style="text-align:center">$\Upsilon$</td>
-<td style="text-align:center">\upsilon</td>
-<td style="text-align:center">$\upsilon$</td>
-</tr>
-<tr>
-<td style="text-align:center">\Phi</td>
-<td style="text-align:center">$\Phi$</td>
-<td style="text-align:center">\phi</td>
-<td style="text-align:center">$\phi$</td>
-</tr>
-<tr>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-<td style="text-align:center">\varphi</td>
-<td style="text-align:center">$\varphi$</td>
-</tr>
-<tr>
-<td style="text-align:center">X</td>
-<td style="text-align:center">$X$</td>
-<td style="text-align:center">\chi</td>
-<td style="text-align:center">$\chi$</td>
-</tr>
-<tr>
-<td style="text-align:center">\Psi</td>
-<td style="text-align:center">$\Psi$</td>
-<td style="text-align:center">\psi</td>
-<td style="text-align:center">$\psi$</td>
-</tr>
-<tr>
-<td style="text-align:center">\Omega</td>
-<td style="text-align:center">$\Omega$</td>
-<td style="text-align:center">\omega</td>
-<td style="text-align:center">$\omega$</td>
-</tr>
-</tbody>
-</table>
-<h4 id="15-特殊字符"><a href="#15-特殊字符" class="headerlink" title="15.特殊字符"></a>15.特殊字符</h4><table>
-<thead>
-<tr>
-<th style="text-align:center">Markdown</th>
-<th style="text-align:center">效果</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">\forall</td>
-<td style="text-align:center">$\forall$</td>
-</tr>
-<tr>
-<td style="text-align:center">\infty</td>
-<td style="text-align:center">$\infty$</td>
-</tr>
-<tr>
-<td style="text-align:center">\emptyset</td>
-<td style="text-align:center">$\emptyset$</td>
-</tr>
-<tr>
-<td style="text-align:center">\exists</td>
-<td style="text-align:center">$\exists$</td>
-</tr>
-<tr>
-<td style="text-align:center">\nabla</td>
-<td style="text-align:center">$\nabla$</td>
-</tr>
-<tr>
-<td style="text-align:center">\bot</td>
-<td style="text-align:center">$\bot$</td>
-</tr>
-<tr>
-<td style="text-align:center">\angle</td>
-<td style="text-align:center">$\angle$</td>
-</tr>
-<tr>
-<td style="text-align:center">\because</td>
-<td style="text-align:center">$\because$</td>
-</tr>
-<tr>
-<td style="text-align:center">\therefore</td>
-<td style="text-align:center">$\therefore$</td>
-</tr>
-</tbody>
-</table>
-<h4 id="16-空格"><a href="#16-空格" class="headerlink" title="16.空格"></a>16.空格</h4><p>$a \quad b$</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$a \quad b$</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;EEPROM.h&gt;</span></span></span><br><span class="line"><span class="keyword">int</span> addr = <span class="number">0</span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">setup</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">loop</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">   <span class="comment">/*</span></span><br><span class="line"><span class="comment">   * 每次写入1个字节，注意不要溢出</span></span><br><span class="line"><span class="comment">   * 比如要保存模拟值，模拟值读出后是一个0-1024的值，但每字节的大小为0-255</span></span><br><span class="line"><span class="comment">   * 容纳不了，所以这里可以变通一下，将值除以4再储存到val,就能够容纳了</span></span><br><span class="line"><span class="comment">   * 使用的时候读出来再乘以4还原回来</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="keyword">int</span> val = analogRead(<span class="number">0</span>) / <span class="number">4</span>;</span><br><span class="line">  EEPROM.write(addr, val);</span><br><span class="line"></span><br><span class="line">  addr = addr + <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">if</span> (addr == <span class="number">512</span>)  <span class="comment">// 当读写的地址到了最大时，注意不要溢出。</span></span><br><span class="line">    addr = <span class="number">0</span>;</span><br><span class="line">  delay(<span class="number">100</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="2-读取方法：EEPROM-read-address"><a href="#2-读取方法：EEPROM-read-address" class="headerlink" title="2. 读取方法：EEPROM.read(address);"></a>2. 读取方法：EEPROM.read(address);</h4><blockquote>
+<p>代码示例如下：</p>
+</blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;EEPROM.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> address = <span class="number">0</span>;</span><br><span class="line">byte value;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">setup</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  Serial.begin(<span class="number">9600</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">loop</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="comment">//读入一个字节</span></span><br><span class="line">  value = EEPROM.read(address);</span><br><span class="line"></span><br><span class="line">  Serial.print(address);</span><br><span class="line">  Serial.print(<span class="string">"\t"</span>);</span><br><span class="line">  Serial.print(value,DEC);</span><br><span class="line">  Serial.println();</span><br><span class="line"></span><br><span class="line">  <span class="comment">//到下一个地址</span></span><br><span class="line">  address = address + <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">//注意地址不要溢出</span></span><br><span class="line">  <span class="keyword">if</span>(address == <span class="number">512</span>)</span><br><span class="line">  &#123;</span><br><span class="line">    address = <span class="number">0</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  delay(<span class="number">500</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="3-清除数据"><a href="#3-清除数据" class="headerlink" title="3. 清除数据"></a>3. 清除数据</h4><blockquote>
+<p>代码示例如下：</p>
+</blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>由于使用Arduino提供的EEPROM API，只能将字节型的数据的存入EEPROM，也就是一次只能写入1个字节。如果要存储多个字节的数据类型，又需要怎么做呢？</p>
+</blockquote>
+<h4 id="4-使用共同体存储"><a href="#4-使用共同体存储" class="headerlink" title="4. 使用共同体存储"></a>4. 使用共同体存储</h4><blockquote>
+<p>共同体的概念：将几个不同（类型不同，但长度相同）的变量放到同一段内存中，共同占用这一段内存数据，使各变量的内存数据始终保持一致。</p>
+</blockquote>
+<p>将float类型数据写入EEPROM</p>
+<blockquote>
+<p>代码示例如下：</p>
+</blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;EEPROM.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> addr = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">union</span> data</span><br><span class="line">&#123;</span><br><span class="line">  <span class="keyword">float</span> a;    <span class="comment">//浮点型，占用4个字节</span></span><br><span class="line">  byte b[<span class="number">4</span>];  <span class="comment">//字节型数组，占用4个字节</span></span><br><span class="line">&#125;;</span><br><span class="line">data val;    <span class="comment">//声明一个data类型的变量val</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">setup</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  val.a = <span class="number">3.1415926</span>;  <span class="comment">//通过a赋值</span></span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; <span class="number">4</span>; i++)</span><br><span class="line">  &#123;</span><br><span class="line">    EEPROM.write(i,val.b[i])  <span class="comment">//通过b拆分为4个字节</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">loop</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>通过共同体进行读取</p>
+</blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;EEPROM.h&gt;</span></span></span><br><span class="line"><span class="keyword">int</span> addr = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">union</span> data</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">float</span> a;</span><br><span class="line">	byte b[<span class="number">4</span>];</span><br><span class="line">&#125;;</span><br><span class="line">data val;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">setup</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  Serial.begin(<span class="number">9600</span>);</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; <span class="number">4</span>;i ++)</span><br><span class="line">  &#123;</span><br><span class="line">    val.b[i] = EEPROM.read(i);</span><br><span class="line">    Serial.println(val.a);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
     </div>
   </div>
   
@@ -709,7 +263,7 @@
         
           本文作者 : 朽年 <br>
         
-        原文链接 : <a href>http://yoursite.com/passages/如何使用Typora编辑数学公式？/</a><br>
+        原文链接 : <a href>http://yoursite.com/passages/01_Ardunio/</a><br>
         版权声明 : 本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
         </blockquote>
       </div>
@@ -769,8 +323,14 @@
           <i class="iconfont icon-06tags"></i>标签: 
           
           <span class="span--tag">
-            <a href="/tags/Typora/">
-              #Typora
+            <a href="/tags/Ardunio/">
+              #Ardunio
+            </a>
+          </span>
+          
+          <span class="span--tag">
+            <a href="/tags/教程/">
+              #教程
             </a>
           </span>
           
@@ -795,15 +355,9 @@
       <div class="nav-pre">
         <i class="iconfont icon-prev"></i>
         上一篇:
-        <a href="/passages/MySQL学习笔记/" target="_self">MySQL学习笔记</a>
+        <a href="/passages/如何使用Typora编辑数学公式？/" target="_self">如何使用Typora编辑数学公式？</a>
       </div>
     
-    
-      <div class="nav-next">
-        下一篇:
-        <a href="/passages/01_Ardunio/" target="_self">Ardunio如何使用EEPROM保存数据？</a>
-        <i class="iconfont icon-next"></i>
-      </div>
     
   </nav>
 
